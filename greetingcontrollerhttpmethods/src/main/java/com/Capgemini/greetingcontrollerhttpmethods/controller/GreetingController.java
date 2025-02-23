@@ -1,10 +1,18 @@
 package com.Capgemini.greetingcontrollerhttpmethods.controller;
 
+import com.Capgemini.greetingcontrollerhttpmethods.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/greeting")
 public class GreetingController {
+    @Autowired
+    GreetingService greetingService;
+    @GetMapping("/service")
+    public String getServiceHello(){
+        return greetingService.getHelloService();
+    }
 
     @GetMapping
     public String getGreeting(){
