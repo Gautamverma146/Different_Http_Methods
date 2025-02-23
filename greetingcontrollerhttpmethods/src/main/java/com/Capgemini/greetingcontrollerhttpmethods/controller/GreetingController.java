@@ -2,6 +2,7 @@ package com.Capgemini.greetingcontrollerhttpmethods.controller;
 
 import com.Capgemini.greetingcontrollerhttpmethods.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -33,4 +34,10 @@ public class GreetingController {
         return "{\"message\": \"Hello from DELETE!\"}";
     }
 
+    @GetMapping("/personalized")
+    public String getGreeting(
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName) {
+        return greetingService.getPersonalizedGreeting(firstName, lastName);
+    }
 }
