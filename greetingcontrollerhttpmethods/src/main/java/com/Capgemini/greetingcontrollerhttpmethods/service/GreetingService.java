@@ -5,6 +5,7 @@ import com.Capgemini.greetingcontrollerhttpmethods.repsitory.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,7 +32,9 @@ public class GreetingService {
     }
     public Optional<GreetingEntity> findById(Long id){
         return Optional.ofNullable(greetingRepository.findById(id).orElse(null));
-
-
     }
+    public List<GreetingEntity> getAllGreetings() {
+        return greetingRepository.findAll();
+    }
+
 }
