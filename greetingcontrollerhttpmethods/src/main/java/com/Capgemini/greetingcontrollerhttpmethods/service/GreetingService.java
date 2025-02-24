@@ -45,5 +45,12 @@ public class GreetingService {
         }
         return new GreetingEntity("Greeting Not Found");
     }
+    public String deleteGreeting(Long id){
+        if(greetingRepository.existsById(id)){
+            greetingRepository.deleteById(id);
+            return "Greeting deleted successfully";
+        }
+        return "Greeting not found";
+    }
 
 }
