@@ -68,5 +68,10 @@ public class GreetingController {
     public List<GreetingEntity> getAllGreetings() {
         return greetingService.getAllGreetings();
     }
+    //uscase 7
+    @PutMapping("/update/{id}")
+    public GreetingEntity updateGreeting(@PathVariable Long id, String newMessage){
+        return greetingService.updateGreeting(id,newMessage);
+    }
 
 }
