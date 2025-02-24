@@ -1,9 +1,13 @@
 package com.Capgemini.greetingcontrollerhttpmethods.service;
 
+import com.Capgemini.greetingcontrollerhttpmethods.entity.GreetingEntity;
+import com.Capgemini.greetingcontrollerhttpmethods.repsitory.GreetingRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GreetingService {
+
+    private GreetingRepository greetingRepository;
     public String getHelloService(){
         return "Hello World!";
     }
@@ -17,5 +21,9 @@ public class GreetingService {
         } else {
             return "Hello World!";
         }
+    }
+    public GreetingEntity saveGreetingRepo(String message){
+        GreetingEntity greetingEntity = new GreetingEntity(message);
+        return greetingRepository.save(greetingEntity);
     }
 }

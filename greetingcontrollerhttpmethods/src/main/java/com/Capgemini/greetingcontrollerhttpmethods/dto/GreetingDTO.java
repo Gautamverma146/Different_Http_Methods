@@ -1,5 +1,8 @@
 package com.Capgemini.greetingcontrollerhttpmethods.dto;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class GreetingDTO {
     String firstName;
     String lastName;
