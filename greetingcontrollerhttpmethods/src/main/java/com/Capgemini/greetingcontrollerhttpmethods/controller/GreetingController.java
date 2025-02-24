@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/greeting")
 public class GreetingController {
@@ -51,5 +53,14 @@ public class GreetingController {
     public ResponseEntity<GreetingEntity> saveMessage(@PathVariable("message") String message) {
         GreetingEntity saveMsg = greetingService.saveGreetingRepo(message);
         return new ResponseEntity<>(saveMsg, HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public Optional<GreetingEntity> getGreetingById(@PathVariable Long id) {
+        Optional<GreetingEntity> greeting = greetingService.findById(id);
+        if (greeting == null) {
+            return Optional.of(new GreetingEntity("Greeting not found"));
+
+        }
+        return greeting;
     }
 }
